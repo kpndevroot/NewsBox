@@ -2,7 +2,20 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { Nav, Navbar, NavbarThird } from "./components";
+import {
+  AlertWidget,
+  CategoriesSelector,
+  DateWidget,
+  Footer,
+  Nav,
+  Navbar,
+  NavbarThird,
+  NewsCard,
+  ProfileCard,
+  SelectedNewsCard,
+  StatWidget,
+  StatusWidget,
+} from "./components";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -10,8 +23,19 @@ function App() {
   return (
     <>
       <Navbar />
+      <CategoriesSelector />
 
-      <h1 className="text-3xl font-bold text-red-400 underline">Newsbox</h1>
+      <div className="flex flex-row justify-between flex-grow widgetGroup">
+        <DateWidget />
+        <StatusWidget />
+        <StatWidget />
+        <AlertWidget />
+      </div>
+      <ProfileCard />
+      <SelectedNewsCard />
+      <NewsCard />
+      <Footer />
+      {/* <h1 className="text-3xl font-bold text-red-400 underline">Newsbox</h1> */}
     </>
   );
 }
