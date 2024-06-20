@@ -3,52 +3,40 @@ import ProfileCard from "../ProfileCard/ProfileCard";
 
 interface SelectedNewsCardProps {
   title: string;
-  authorName: string;
-  NewsTime: string;
-  image: string;
+  author: string;
+  publishedAt: string;
+  urlToImage: string;
   date: string;
   content: string;
+  description;
 }
 
 const SelectedNewsCard: React.FC<SelectedNewsCardProps> = ({
   title,
-  authorName,
-  NewsTime,
-  image,
+  author,
+  publishedAt,
+  urlToImage,
   date,
+  description,
   content,
 }) => {
-  // Random news data (for demonstration purposes)
-  const randomNews: SelectedNewsCardProps = {
-    title: "Breaking News: Lorem Ipsum",
-    authorName: "Jane Doe",
-    NewsTime: "10:30 AM",
-    image: "https://picsum.photos/id/237/600/400",
-    date: "June 21, 2024",
-    content:
-      " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac feugiat quam, sed tempus lacus. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac feugiat quam, sed tempus lacus. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac feugiat quam, sed tempus lacus. In hac habitasse platea dictumst.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac feugiat quam, sed tempus lacus. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac feugiat quam, sed tempus lacus. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac feugiat quam, sed tempus lacus. In hac habitasse platea dictumst.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac feugiat quam, sed tempus lacus. In hac habitasse platea dictumst.",
-  };
-
   return (
-    <div className="flex flex-col w-3/4 h-auto px-3 py-4">
+    <div className="flex flex-col px-3 py-4 md:w-3/4">
       <div className="w-full p-2 border-2 border-red-500 rounded-lg images">
-        <img
-          src={image || randomNews.image}
-          className="w-full h-full"
-          alt={title || randomNews.title}
-        />
+        <img src={urlToImage} className="w-full h-full" alt={title} />
       </div>
       <div className="headingBox">
-        <h2 className="text-3xl font-bold ">{title || randomNews.title}</h2>
+        <h2 className="text-3xl font-bold text-red-500">{title}</h2>
       </div>
       <div className="authorBox">
-        <ProfileCard
-          name={authorName || randomNews.authorName}
-          time={NewsTime || randomNews.NewsTime}
-        />
+        <ProfileCard name={author} time={publishedAt} />
       </div>
       <div className="text-justify describeBox">
-        <p>{content || randomNews.content}</p>
+        <p className="text-gray-600"> {description}</p>
+      </div>
+      <br />
+      <div className="text-justify describeBox">
+        <p className="text-gray-600"> {content}</p>
       </div>
     </div>
   );

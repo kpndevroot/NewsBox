@@ -44,7 +44,7 @@ function Navbar() {
 
           <ul className="lg:flex lg:ml-14 lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
             <li className="hidden mb-6 max-lg:block">
-              <a href="javascript:void(0)">
+              <a href=" ">
                 <img
                   src="https://readymadeui.com/readymadeui.svg"
                   alt="logo"
@@ -54,7 +54,7 @@ function Navbar() {
             </li>
             <li className="px-3 max-lg:border-b max-lg:py-3">
               <a
-                href="javascript:void(0)"
+                href=" "
                 className="lg:hover:text-[#007bff] text-[#007bff] block font-semibold text-[15px]"
               >
                 Home
@@ -62,7 +62,7 @@ function Navbar() {
             </li>
             <li className="px-3 max-lg:border-b max-lg:py-3">
               <a
-                href="javascript:void(0)"
+                href=" "
                 className="lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]"
               >
                 Team
@@ -70,7 +70,7 @@ function Navbar() {
             </li>
             <li className="px-3 max-lg:border-b max-lg:py-3">
               <a
-                href="javascript:void(0)"
+                href=" "
                 className="lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]"
               >
                 Feature
@@ -78,7 +78,7 @@ function Navbar() {
             </li>
             <li className="px-3 max-lg:border-b max-lg:py-3">
               <a
-                href="javascript:void(0)"
+                href=" "
                 className="lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]"
               >
                 Blog
@@ -86,7 +86,7 @@ function Navbar() {
             </li>
             <li className="px-3 max-lg:border-b max-lg:py-3">
               <a
-                href="javascript:void(0)"
+                href=" "
                 className="lg:hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]"
               >
                 About

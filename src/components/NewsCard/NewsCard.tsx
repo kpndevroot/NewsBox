@@ -1,5 +1,5 @@
 import React from "react";
-import viteLogo from "/vite.svg";
+// import viteLogo from "/vite.svg";
 import ProfileCard from "../ProfileCard/ProfileCard";
 
 interface NewsCardProps {
@@ -14,10 +14,10 @@ const NewsCard: React.FC<NewsCardProps> = ({
   authorTime = "Time not available",
 }) => {
   return (
-    <div className="flex w-1/4 gap-2 border-2 border-red-500 h-1/5 bg-slate-700">
+    <div className="flex w-full gap-2 border-2 border-red-500 h-1/5 bg-slate-700">
       <div className="w-1/4 h-full ">
         <div className="w-full h-auto p-2 rounded-lg imageBox">
-          <img src={viteLogo} className="w-full h-full logo" alt="Vite logo" />
+          {/* <img src={viteLogo} className="w-full h-full logo" alt="Vite logo" /> */}
         </div>
       </div>
       <div className="flex flex-col w-3/4 gap-1 right">

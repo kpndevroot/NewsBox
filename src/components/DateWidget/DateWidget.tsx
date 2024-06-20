@@ -1,5 +1,5 @@
 import React from "react";
-import { useDateAndGreeting } from "../../../hooks";
+import { useDateAndGreeting } from "../../hooks";
 
 const DateWidget: React.FC = () => {
   const { dateString, greeting } = useDateAndGreeting();

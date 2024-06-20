@@ -10,6 +10,7 @@ import ProfileCard from "./ProfileCard/ProfileCard";
 import SelectedNewsCard from "./NewsCard/SelectedNewsCard";
 import NewsCard from "./NewsCard/NewsCard";
 import Footer from "./Footer/Footer";
+import WeatherGroup from "./WeatherGroup/WeatherGroup";
 export {
   Navbar,
   Nav,
@@ -23,4 +24,5 @@ export {
   SelectedNewsCard,
   NewsCard,
   Footer,
+  WeatherGroup,
 };
