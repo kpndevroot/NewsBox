@@ -4,14 +4,12 @@ This project is a React application built using Vite, Tailwind CSS, React Query,
 
 ## Table of Contents
 
-- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Commands](#commands)
-- [Folder Structure](#folder-structure)
 - [Technologies Used](#technologies-used)
 
-## Features
+## technologies
 
 - **React**: A JavaScript library for building user interfaces.
 - **Vite**: A fast build tool and development server.
