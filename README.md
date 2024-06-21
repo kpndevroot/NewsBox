@@ -1,6 +1,6 @@
 # NewsBox
 
-This project is a React application built using Vite, Tailwind CSS, React Query, and Zustand. It is designed for high performance, ease of development, and responsiveness.
+This project is a React application built using Vite, Tailwind CSS, React Query, and Zustand. It is designed for high performance, ease of development
 
 ## Table of Contents
 
