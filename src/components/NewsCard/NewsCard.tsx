@@ -1,30 +1,50 @@
 import React from "react";
-// import viteLogo from "/vite.svg";
 import ProfileCard from "../ProfileCard/ProfileCard";
 
 interface NewsCardProps {
   heading: string;
   authorName?: string;
   authorTime?: string;
+  urlToImage?: string;
+  onClick: () => void;
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({
-  heading = "new heading is there",
+  heading = "New heading is there",
   authorName = "Unknown Author",
   authorTime = "Time not available",
+  urlToImage,
+  onClick,
 }) => {
   return (
-    <div className="flex w-full gap-2 border-2 border-red-500 h-1/5 bg-slate-700">
-      <div className="w-1/4 h-full ">
-        <div className="w-full h-auto p-2 rounded-lg imageBox">
-          {/* <img src={viteLogo} className="w-full h-full logo" alt="Vite logo" /> */}
+    <div
+      className="flex w-full overflow-hidden bg-white border-2 rounded-lg shadow-md "
+      onClick={onClick}
+    >
+      {/* Image Section */}
+      <div className="relative w-1/3 h-auto">
+        <div className="w-full h-full p-2">
+          <img
+            src={urlToImage}
+            className="object-cover w-full h-full rounded-lg"
+            alt="image"
+          />
         </div>
       </div>
-      <div className="flex flex-col w-3/4 gap-1 right">
-        <div className="headBox">
-          <h3 className="font-bold text-left text-md">{heading}</h3>
+
+      {/* Text and Profile Section */}
+      <div className="flex flex-col w-2/3 p-4">
+        {/* Heading Section */}
+        <div className="mb-4">
+          <h4 className="font-bold text-left text-gray-700 text-md">
+            {heading}
+          </h4>
         </div>
-        <ProfileCard name={authorName} time={authorTime} />
+
+        {/* Profile Card Section */}
+        <div className="mt-auto">
+          <ProfileCard name={authorName} publishedAt={authorTime} />
+        </div>
       </div>
     </div>
   );

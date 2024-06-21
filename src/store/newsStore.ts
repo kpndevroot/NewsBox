@@ -1,4 +1,3 @@
-// src/store/newsStore.ts
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
@@ -34,7 +33,7 @@ const useNewsStore = create<NewsState>()(
       (set) => ({
         articles: [],
         filters: {
-          date: "",
+          date: "", // Initial date filter value
           searchQuery: "",
           language: "en",
           category: "general",

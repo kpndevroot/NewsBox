@@ -12,8 +12,9 @@ function WeatherGroup() {
   if (weatherError) return <div>Errors: {weatherError.message}</div>;
   if (weatherLoading) return <div>Loading...</div>;
   return (
-    <div className="flex flex-row justify-between flex-grow widgetGroup">
+    <div className="flex flex-row flex-wrap justify-start flex-grow gap-4 p-4 bg-white ">
       <DateWidget />
+
       {weatherError ? null : (
         <>
           <StatusWidget

@@ -14,25 +14,30 @@ const StatWidget: React.FC<StatWidgetProps> = ({
   pressure,
 }) => {
   return (
-    <div className="flex flex-row justify-center px-5 bg-white border-2 border-red-500">
-      <div className="flex flex-col justify-around px-4 py-5">
-        <div className="flex flex-row justify-between gap-3 px-4 py-2 text-right wind">
-          <h4 className="text-sm text-right text-black">{wind} kmph</h4>
-          <div className="w-auto bg-red-200 rounded-md iconCover">
+    <div className="flex flex-col items-center justify-center px-4 py-3 mx-auto transition duration-300 ease-in-out bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg sm:w-72 md:w-80 lg:w-96 xl:w-108">
+      <div className="flex flex-col justify-around w-full max-w-xs sm:max-w-sm">
+        {/* Wind */}
+        <div className="flex items-center justify-between px-4 py-2 mb-2 text-sm text-right text-gray-700 bg-gray-100 rounded-md">
+          <div className="mr-2 text-red-500">
             <WiWindy size={24} />
           </div>
+          <div>{wind} kmph</div>
         </div>
-        <div className="flex flex-row justify-between px-4 py-2 text-right humidity">
-          <h4 className="text-sm text-right text-black">{humidity} g.m-3</h4>
-          <div className="w-auto bg-red-200 rounded-md iconCover">
+
+        {/* Humidity */}
+        <div className="flex items-center justify-between px-4 py-2 mb-2 text-sm text-right text-gray-700 bg-gray-100 rounded-md">
+          <div className="mr-2 text-red-500">
             <WiHumidity size={24} />
           </div>
+          <div>{humidity} g.m-3</div>
         </div>
-        <div className="flex flex-row justify-between px-4 py-2 text-right pressure">
-          <h4 className="text-sm text-right text-black ">{pressure} Pa</h4>
-          <div className="w-auto bg-red-200 rounded-md iconCover">
+
+        {/* Pressure */}
+        <div className="flex items-center justify-between px-4 py-2 text-sm text-right text-gray-700 bg-gray-100 rounded-md">
+          <div className="mr-2 text-red-500">
             <TbGauge size={24} />
           </div>
+          <div>{pressure} Pa</div>
         </div>
       </div>
     </div>

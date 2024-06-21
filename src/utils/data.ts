@@ -1,5 +1,5 @@
 export const categoriesData: string[] = [
-  "All",
+  // "All",
   "Sport",
   "Lifestyle",
   "Technology",

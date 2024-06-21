@@ -1,25 +1,49 @@
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
+import useNewsStore from "../../store/newsStore";
+import useFetchNews from "../../hooks/useFetchNews";
+import DatePicker from "react-datepicker";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [searchInput, setSearchInput] = useState("");
+  const { setFilters } = useNewsStore();
+  const [selectedDate, setSelectedDate] = useState("");
+  const { handleDateChange, resetFilters, refetchNews } = useFetchNews();
   const handleClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setFilters({ searchQuery: searchInput });
+  };
+
+  const handleDateSelection = (event) => {
+    const date = event.target.value;
+    setSelectedDate(date);
+    refetchNews();
+    handleDateChange(date.toISOString());
+  };
+  const clearFilters = () => {
+    setSelectedDate("");
+    resetFilters();
+  };
   return (
     <header className="flex border-b py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50">
-      <div className="flex flex-wrap items-center w-full gap-5">
+      <div className="flex flex-wrap items-center justify-start w-full gap-5">
         <PaperAirplaneIcon className="w-6 h-6 text-black" />
         <span className="text-black">Paper.io</span>
 
         <div
           id="collapseMenu"
-          className={`max-lg:hidden lg:!block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50 ${
+          className={`items-baseline max-lg:hidden lg:!block max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50 ${
             isMenuOpen ? "block" : "hidden"
-          }`}
+          } `}
         >
           <button
             id="toggleClose"
@@ -42,7 +66,7 @@ function Navbar() {
             </svg>
           </button>
 
-          <ul className="lg:flex lg:ml-14 lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+          <ul className="lg:flex lg:text-center lg:items-center lg:ml-14 lg:gap-x-5 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
             <li className="hidden mb-6 max-lg:block">
               <a href=" ">
                 <img
@@ -92,6 +116,45 @@ function Navbar() {
                 About
               </a>
             </li>
+            <li className="px-3 max-lg:border-b max-lg:py-3 ">
+              <form
+                onSubmit={handleSearchSubmit}
+                className="flex xl:w-80 max-xl:w-full bg-gray-100 px-6 py-3 rounded outline outline-transparent focus-within:outline-[#007bff] focus-within:bg-transparent"
+              >
+                <input
+                  type="text"
+                  placeholder="Search something..."
+                  value={searchInput}
+                  onChange={handleSearchChange}
+                  className="w-full pr-2 text-sm text-gray-400 bg-transparent rounded outline-none"
+                />
+                <button type="submit" className="cursor-pointer fill-gray-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 192.904 192.904"
+                    width="16px"
+                  >
+                    <path d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z"></path>
+                  </svg>
+                </button>
+              </form>
+            </li>
+            <li className="px-2 max-lg:border-b max-lg:py-2">
+              <div className="flex xl:w-42 max-xl:w-full bg-gray-100 px-6 py-3 rounded outline outline-transparent focus-within:outline-[#007bff] focus-within:bg-transparent">
+                <input
+                  type="date"
+                  value={selectedDate}
+                  onChange={handleDateSelection}
+                  className="w-full pr-2 text-sm text-gray-400 bg-transparent rounded outline-none"
+                />
+                <button
+                  className="ml-2 cursor-pointer fill-gray-400"
+                  onClick={clearFilters}
+                >
+                  Clear
+                </button>
+              </div>
+            </li>
           </ul>
         </div>
 
@@ -130,6 +193,22 @@ function Navbar() {
               >
                 <path d="m190.707 180.101-47.078-47.077c11.702-14.072 18.752-32.142 18.752-51.831C162.381 36.423 125.959 0 81.191 0 36.422 0 0 36.423 0 81.193c0 44.767 36.422 81.187 81.191 81.187 19.688 0 37.759-7.049 51.831-18.751l47.079 47.078a7.474 7.474 0 0 0 5.303 2.197 7.498 7.498 0 0 0 5.303-12.803zM15 81.193C15 44.694 44.693 15 81.191 15c36.497 0 66.189 29.694 66.189 66.193 0 36.496-29.692 66.187-66.189 66.187C44.693 147.38 15 117.689 15 81.193z"></path>
               </svg>
+            </div>
+            <div className="flex items-center px-6 py-3 mt-3 bg-gray-100 rounded xl:w-80 max-xl:w-full">
+              <div className="flex items-center px-6 py-3 mt-3 bg-gray-100 rounded xl:w-80 max-xl:w-full">
+                <input
+                  type="date"
+                  value={selectedDate}
+                  onChange={handleDateSelection}
+                  className="w-full pr-2 text-sm text-gray-400 bg-transparent rounded outline-none"
+                />
+                <button
+                  className="ml-2 cursor-pointer fill-gray-400"
+                  onClick={clearFilters}
+                >
+                  Clear
+                </button>
+              </div>
             </div>
             <ul className="flex flex-col items-start justify-between w-full h-full lg:hidden">
               <li className="px-3 max-lg:border-b max-lg:py-3 sm:hover:text-[#007bff] text-[#007bff] block font-semibold text-[13px]">
