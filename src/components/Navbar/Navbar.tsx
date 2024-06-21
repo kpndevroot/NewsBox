@@ -37,7 +37,7 @@ function Navbar() {
     <header className="flex border-b py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide relative z-50">
       <div className="flex flex-wrap items-center justify-start w-full gap-5">
         <PaperAirplaneIcon className="w-6 h-6 text-black" />
-        <span className="text-black">Paper.io</span>
+        <span className="text-black">NewsBox.io</span>
 
         <div
           id="collapseMenu"
